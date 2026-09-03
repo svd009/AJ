@@ -363,3 +363,54 @@ footer {
   color: #35231f !important;
   text-decoration: none !important;
 }
+
+/* Navigation text styling */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.main-nav a,
+.main-nav a:link,
+.main-nav a:visited {
+  display: inline-block;
+  color: #f8f5ef !important;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.main-nav a:hover,
+.main-nav a:active,
+.main-nav a.active {
+  color: #d5b77d !important;
+  text-decoration: none !important;
+}
+
+.main-nav a.active {
+  border-bottom: 1px solid #d5b77d;
+  padding-bottom: 8px;
+}
+
+/* Book Appointment text */
+.header-button,
+.header-button:link,
+.header-button:visited {
+  display: inline-block;
+  color: #f8f5ef !important;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.header-button:hover,
+.header-button:active {
+  color: #d5b77d !important;
+  text-decoration: none !important;
+}
