@@ -335,3 +335,31 @@ footer {
   font-size: 16px;
   line-height: 1.8;
 }
+
+/* Final navigation fix */
+.site-header {
+  background-color: #f8f5ef !important;
+}
+
+.main-nav a,
+.main-nav a:link,
+.main-nav a:visited,
+.main-nav a:hover,
+.main-nav a:active {
+  color: #35231f !important;
+  text-decoration: none !important;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: #b38a4a !important;
+}
+
+.header-button,
+.header-button:link,
+.header-button:visited,
+.header-button:hover,
+.header-button:active {
+  color: #35231f !important;
+  text-decoration: none !important;
+}
