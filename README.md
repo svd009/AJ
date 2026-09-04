@@ -1,4 +1,4 @@
-Anand Jewellers: Website
+**Anand Jewellers: Website**
 
 Static website for Anand Jewellers, a gold/silver/diamond jewellery showroom in Pune, India (est. 2001).
 
