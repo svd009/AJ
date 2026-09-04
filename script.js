@@ -95,6 +95,19 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
+    // Clicking any product jumps to the "All Pieces" filter narrowed to
+    // that product's own category — e.g. clicking a gold necklace shows
+    // every gold piece, not a single zoomed-in photo.
+    pieces.forEach(function (card) {
+      card.addEventListener("click", function () {
+        var category = card.getAttribute("data-category");
+        var targetBtn = document.querySelector('.filter-btn[data-filter="' + category + '"]');
+        if (targetBtn) targetBtn.click();
+        var galleryTop = document.querySelector(".filter-bar");
+        if (galleryTop) galleryTop.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
     // Deep link from the homepage "shop by category" circles, e.g.
     // collections.html?type=ring shows only rings, regardless of material.
     var params = new URLSearchParams(window.location.search);
@@ -105,34 +118,12 @@ document.addEventListener("DOMContentLoaded", function () {
         var match = card.getAttribute("data-type") === typeParam;
         card.classList.toggle("is-hidden", !match);
       });
-      var galleryTop = document.querySelector(".filter-bar");
-      if (galleryTop) {
+      var galleryTop2 = document.querySelector(".filter-bar");
+      if (galleryTop2) {
         window.requestAnimationFrame(function () {
-          galleryTop.scrollIntoView({ behavior: "smooth", block: "start" });
+          galleryTop2.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       }
     }
-  }
-
-  // Lightbox for the collections gallery.
-  var lightbox = document.querySelector(".lightbox");
-  if (lightbox) {
-    var lightboxImg = lightbox.querySelector("img");
-    var lightboxCaption = lightbox.querySelector(".lightbox-caption");
-    var closeBtn = lightbox.querySelector(".lightbox-close");
-    pieces.forEach(function (card) {
-      card.addEventListener("click", function () {
-        var img = card.querySelector("img");
-        var label = card.querySelector("figcaption");
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightboxCaption.textContent = label ? label.textContent : img.alt;
-        lightbox.classList.add("is-open");
-      });
-    });
-    function closeLightbox() { lightbox.classList.remove("is-open"); }
-    closeBtn.addEventListener("click", closeLightbox);
-    lightbox.addEventListener("click", function (e) { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLightbox(); });
   }
 });

@@ -297,20 +297,8 @@ section { padding: 92px 0; }
 .filter-btn:hover { border-color: var(--accent); color: var(--brown-dark); }
 .filter-btn.active { background: var(--brown); border-color: var(--brown); color: var(--white); }
 .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.gallery-grid .piece-card { cursor: zoom-in; }
+.gallery-grid .piece-card { cursor: pointer; }
 .gallery-grid .piece-card.is-hidden { display: none; }
-
-.lightbox {
-  position: fixed; inset: 0; background: rgba(38,22,15,0.94); display: none;
-  align-items: center; justify-content: center; z-index: 1000; padding: 40px;
-}
-.lightbox.is-open { display: flex; }
-.lightbox img { max-width: min(760px, 90vw); max-height: 82vh; border-radius: 6px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
-.lightbox-caption { position: absolute; bottom: 36px; color: var(--cream); font-family: var(--font-display); font-size: 1.1rem; }
-.lightbox-close {
-  position: absolute; top: 24px; right: 32px; background: none; border: 1px solid rgba(253,245,230,0.4);
-  color: var(--cream); width: 40px; height: 40px; border-radius: 50%; font-size: 1.1rem; cursor: pointer;
-}
 
 /* =========================================================
    Services rows + process
