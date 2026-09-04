@@ -1,55 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us - Anand Jewellers</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="icon" type="image/png" href="images/8.jpg"/>
-  <meta name="description" content="Discover the legacy of Anand Jewellers—handcrafted jewelry in gold, silver, and diamonds since 2001." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us | Anand Jewellers, Pune</title>
+<meta name="description" content="Founded in 2001, Anand Jewellers is a government-approved gold valuer in New Sangvi, Pune, partnered with 10+ banks for loan and VISA documentation." />
+<link rel="icon" href="images/8.jpg" type="image/jpeg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo-container">
-      <a href="index.html">
-        <img src="images/8.jpg" alt="Anand Jewellers Logo" class="logo" />
-      </a>
-      <img src="images/7.jpg" alt="Authorized Gold Valuer Logo" class="logo-secondary" />
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About Us</a></li>
-        <li><a href="collections.html">Collections</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main class="about">
-  <section class="intro">
-    <h1>About Anand Jewellers</h1>
-    <p class="tagline">Crafting Timeless Elegance Since 2001</p>
-    <div class="about-grid">
-      <div class="about-image-container">
-        <img src="images/aj1.jpg" alt="Jewelry Showroom" class="about-image" />
-      </div>
-      <div class="about-text">
-        <p>Founded in 2001, <strong>Anand Jewellers</strong> has grown into a household name in handcrafted gold, silver, and diamond jewelry. Every piece is a blend of heritage craftsmanship and contemporary design.</p>
-        <p>We specialize in exquisite collections across Gold, Silver, Diamond, Platinum, and Precious Gemstones—including Rings, Earrings, Mangalsutras, Necklaces, Bangles, Anklets, and more.</p>
-        <p>As a <strong>government-approved gold valuer</strong>, Anand Jewellers is recognized for precision, authenticity, and integrity in all evaluations. Our strong partnerships with over 10 leading banks across 40+ branches allow us to provide specialized services for <strong>bank loan processing, asset-backed financing, and VISA-related documentation</strong>.</p>
-        <p>We take pride in our authenticity, quality, and customer-first values that keep clients coming back for generations.</p>
-      </div>
-    </div>
-  </section>
-</main>
+<header class="site-header">
+  <a href="index.html" class="brand">
+    <span class="logo-stack">
+      <img src="images/8.jpg" alt="Anand Jewellers logo" class="logo" />
+      <img src="images/7.jpg" alt="Government-Approved Gold Valuer badge" class="logo-badge" />
+    </span>
+    <span class="brand-name">Anand Jewellers<small>Since 2001 &middot; Pune</small></span>
+  </a>
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="collections.html">Collections</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <a href="contact.html" class="btn btn-accent">Book a Visit</a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <footer>
-    <div class="footer-logo">
-      <img src="images/8.jpg" alt="Anand Footer Logo" class="logo" />
+<section class="page-intro">
+  <div class="container">
+    <p class="eyebrow">Our story</p>
+    <h1>Crafting timeless elegance since 2001</h1>
+    <p>Two decades of trust, craftsmanship and personal service in the heart of New Sangvi, Pune.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container split">
+    <div class="split-media">
+      <img src="images/aj1.jpg" alt="Anand Jewellers showroom entrance, decorated for a festival" loading="lazy" />
     </div>
-    <p>&copy; 2025 Anand Jewellers. All rights reserved.</p>
-  </footer>
+    <div class="split-text">
+      <p class="eyebrow">Founded in 2001</p>
+      <h2>A household name built one piece at a time.</h2>
+      <p>Anand Jewellers has grown into a trusted name in handcrafted gold, silver and diamond jewellery. Every piece is a blend of heritage craftsmanship and contemporary design, made to be part of your story for generations.</p>
+      <p>We specialise in collections across gold, silver, diamond, platinum and precious gemstones &mdash; rings, earrings, mangalsutras, necklaces, bangles, anklets and more.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-soft">
+  <div class="container split reverse">
+    <div class="split-media">
+      <img src="images/7.jpg" alt="Government-approved gold valuer certification badge" loading="lazy" />
+    </div>
+    <div class="split-text">
+      <p class="eyebrow">Trust, verified</p>
+      <h2>A government-approved gold valuer.</h2>
+      <p>Anand Jewellers is recognised for precision, authenticity and integrity in every evaluation. Our strong partnerships with over 10 leading banks across 40+ branches let us offer specialised support for bank loan processing, asset-backed financing, and VISA-related documentation.</p>
+      <p>We take pride in the authenticity, quality and customer-first values that keep clients coming back for generations.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow">Behind every piece</p>
+      <h2>Our brand marks</h2>
+    </div>
+    <div class="credentials">
+      <div class="credentials-photo" style="margin-bottom: 40px;">
+        <img src="images/8.jpg" alt="Anand Jewellers logo" style="background:#fff; padding: 40px;" />
+      </div>
+      <div class="credentials-photo" style="margin-bottom: 40px;">
+        <img src="images/7.jpg" alt="Government-Approved Gold Valuer badge" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-brown">
+  <div class="container">
+    <div class="stat-band">
+      <div class="reveal"><span class="stat-number" data-target="24" data-suffix="+">0</span><span class="stat-label">Years since 2001</span></div>
+      <div class="reveal"><span class="stat-number" data-target="10" data-suffix="+">0</span><span class="stat-label">Partner banks</span></div>
+      <div class="reveal"><span class="stat-number" data-target="40" data-suffix="+">0</span><span class="stat-label">Branches network</span></div>
+      <div class="reveal"><span class="stat-number" data-target="1">0</span><span class="stat-label">Govt.-Approved Valuer</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="text-align:center;">
+  <div class="container">
+    <p class="eyebrow">Find something special</p>
+    <h2>Let us help you find your perfect piece.</h2>
+    <p style="margin: 0 auto 28px;">Visit our New Sangvi showroom or reach out to plan your visit.</p>
+    <a href="contact.html" class="btn btn-brown">Contact Us</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="images/8.jpg" alt="Anand Jewellers logo" />
+          <span>Anand Jewellers</span>
+        </div>
+        <p>Timeless gold, silver and diamond jewellery, crafted with trust and care since 2001.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit Us</h4>
+        <p>Shop no. 5, Narsinh Residency<br />New Sangvi, Pune, Maharashtra 411027</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p class="placeholder-text">Add phone number<br />Add email address</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Anand Jewellers. All rights reserved.</p>
+      <p>Designed with care.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

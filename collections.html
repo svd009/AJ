@@ -1,81 +1,154 @@
-ous <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Collections - Anand Jewellers</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="icon" type="image/png" href="img/favicon.png"/>
-  <meta name="description" content="Explore Anand Jewellers' premium collections of handcrafted rings, necklaces, bangles, and more." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Collections | Anand Jewellers, Pune</title>
+<meta name="description" content="Browse gold, diamond, silver and gemstone jewellery from Anand Jewellers &mdash; rings, necklaces, bangles, mangalsutras, earrings and anklets." />
+<link rel="icon" href="images/8.jpg" type="image/jpeg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="logo-container">
-      <a href="index.html">
-        <img src="images/8.jpg" alt="Anand Jewellers Logo" class="logo" />
-      </a>
-      <img src="images/7.jpg" alt="Authorized Gold Valuer" class="logo-secondary" />
+
+<header class="site-header">
+  <a href="index.html" class="brand">
+    <span class="logo-stack">
+      <img src="images/8.jpg" alt="Anand Jewellers logo" class="logo" />
+      <img src="images/7.jpg" alt="Government-Approved Gold Valuer badge" class="logo-badge" />
+    </span>
+    <span class="brand-name">Anand Jewellers<small>Since 2001 &middot; Pune</small></span>
+  </a>
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="collections.html" class="active">Collections</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <a href="contact.html" class="btn btn-accent">Book a Visit</a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="page-intro">
+  <div class="container">
+    <p class="eyebrow">Our collections</p>
+    <h1>Elegance, tradition, innovation</h1>
+    <p>Every piece shown here is available to view and try in our New Sangvi showroom.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Pieces</button>
+      <button class="filter-btn" data-filter="gold">Gold</button>
+      <button class="filter-btn" data-filter="diamond">Diamond</button>
+      <button class="filter-btn" data-filter="silver">Silver</button>
+      <button class="filter-btn" data-filter="gemstones">Gemstones</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="collections.html" class="active">Collections</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main class="collections">
-    <section class="intro">
-      <h1>Our Jewelry Collections</h1>
-      <p class="tagline">Elegance | Tradition | Innovation </p>
-    </section>
+    <div class="gallery-grid">
+      <figure class="piece-card" data-category="gold">
+        <img src="images/necklace.jpg" alt="Gold and stone necklace set" loading="lazy" />
+        <figcaption>Classic Gold Necklace<small>Gold</small></figcaption>
+      </figure>
+      <figure class="piece-card" data-category="diamond">
+        <img src="images/dring.jpg" alt="Solitaire diamond ring" loading="lazy" />
+        <figcaption>Solitaire Diamond Ring<small>Diamond</small></figcaption>
+      </figure>
+      <figure class="piece-card" data-category="gold">
+        <img src="images/bracelet.jpg" alt="Gold and diamond link bracelet" loading="lazy" />
+        <figcaption>Diamond-Set Bracelet<small>Gold</small></figcaption>
+      </figure>
+      <figure class="piece-card" data-category="gold">
+        <img src="images/earring.jpeg" alt="Peacock-motif gold earrings" loading="lazy" />
+        <figcaption>Peacock Earrings<small>Gold</small></figcaption>
+      </figure>
+      <figure class="piece-card" data-category="gold">
+        <img src="images/mangalsutra.jpg" alt="Traditional gold mangalsutra" loading="lazy" />
+        <figcaption>Traditional Mangalsutra<small>Gold</small></figcaption>
+      </figure>
+      <figure class="piece-card" data-category="gold">
+        <img src="images/bangles.jpeg" alt="Gold bangles with gemstone inlay" loading="lazy" />
+        <figcaption>Designer Bangles<small>Gold</small></figcaption>
+      </figure>
+      <figure class="piece-card" data-category="silver">
+        <img src="images/anklet.jpeg" alt="Silver anklet with charms" loading="lazy" />
+        <figcaption>Silver Anklet<small>Silver</small></figcaption>
+      </figure>
+      <figure class="piece-card" data-category="silver">
+        <img src="images/gs1.jpg" alt="Silver drop earrings with blue stone" loading="lazy" />
+        <figcaption>Stone-Set Silver Earrings<small>Silver</small></figcaption>
+      </figure>
+      <figure class="piece-card" data-category="gemstones">
+        <img src="images/gs2.png" alt="Assorted gemstone rings in a display case" loading="lazy" />
+        <figcaption>Gemstone Rings<small>Gemstones</small></figcaption>
+      </figure>
+      <figure class="piece-card" data-category="gemstones">
+        <img src="images/gs.png" alt="Loose certified gemstones" loading="lazy" />
+        <figcaption>Certified Gemstones<small>Gemstones</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-    <section class="gallery">
-      <div class="gallery-grid">
-        <div class="item">
-          <img src="images/dring.jpg" alt="Diamond Ring" />
-          <p>Elegant Diamond Rings</p>
+<section class="section-brown" style="text-align:center;">
+  <div class="container">
+    <p class="eyebrow">Can't decide?</p>
+    <h2>Come try them on in person.</h2>
+    <p style="margin: 0 auto 28px;">Our team can help you find the right piece and size &mdash; no obligation.</p>
+    <a href="contact.html" class="btn btn-accent">Book a Visit</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="images/8.jpg" alt="Anand Jewellers logo" />
+          <span>Anand Jewellers</span>
         </div>
-        <div class="item">
-          <img src="images/necklace.jpg" alt="Gold Necklace" />
-          <p>Classic Gold Necklaces</p>
-        </div>
-        <div class="item">
-          <img src="images/bracelet.jpg" alt="Bracelet" />
-          <p>Stylish Bracelets</p>
-        </div>
-        <div class="item">
-          <img src="images/earring.jpeg" alt="Luxury Earrings" />
-          <p>Luxury Earrings</p>
-        </div>
-        <div class="item">
-          <img src="images/mangalsutra.jpg" alt="Mangalsutra" />
-          <p>Traditional Mangalsutras</p>
-        </div>
-        <div class="item">
-          <img src="images/bangles.jpeg" alt="Bangles" />
-          <p>Designer Bangles</p>
-        </div>
-        <div class="item">
-          <img src="images/anklet.jpeg" alt="Silver Anklets" />
-          <p>Silver Anklets</p>
-        </div>
-        <div class="item">
-          <img src="images/gs2.png" alt="Precious Gemstones" />
-          <p> Precious Gemstones</p>
-        </div>
+        <p>Timeless gold, silver and diamond jewellery, crafted with trust and care since 2001.</p>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-logo">
-      <img src="images/8.jpg" alt="Footer Logo" class="logo" />
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit Us</h4>
+        <p>Shop no. 5, Narsinh Residency<br />New Sangvi, Pune, Maharashtra 411027</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p class="placeholder-text">Add phone number<br />Add email address</p>
+      </div>
     </div>
-    <p>&copy; 2025 Anand Jewellers. All rights reserved.</p>
-  </footer>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Anand Jewellers. All rights reserved.</p>
+      <p>Designed with care.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img src="" alt="" />
+  <p class="lightbox-caption"></p>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
