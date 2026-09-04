@@ -125,12 +125,15 @@ section { padding: 92px 0; }
   align-items: center;
   justify-content: space-between;
   padding: 12px 32px;
-  background: transparent;
-  transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
+  background: rgba(20, 10, 8, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease, backdrop-filter 0.35s ease;
 }
 .site-header.is-scrolled {
   background: rgba(253, 245, 230, 0.97);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 2px 18px rgba(90, 62, 54, 0.12);
   padding: 8px 32px;
 }
@@ -207,6 +210,7 @@ section { padding: 92px 0; }
   border: 3px solid var(--tan); transition: border-color 0.3s ease, transform 0.3s ease;
 }
 .category-item:hover .category-circle { border-color: var(--accent); transform: translateY(-4px); }
+.category-circle picture { display: block; width: 100%; height: 100%; }
 .category-circle img { width: 100%; height: 100%; object-fit: cover; }
 .category-item span { font-size: 0.88rem; font-weight: 600; }
 
@@ -223,6 +227,7 @@ section { padding: 92px 0; }
    ========================================================= */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .split.reverse .split-media { order: 2; }
+.split-media picture { display: block; }
 .split-media img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-soft); }
 .split-text p { max-width: 52ch; }
 
@@ -236,12 +241,19 @@ section { padding: 92px 0; }
   align-items: center;
 }
 .credentials-photo { position: relative; }
+.credentials-photo picture { display: block; }
 .credentials-photo img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-soft); }
 .credentials-badges {
   display: flex; align-items: center; gap: 18px;
   background: var(--white); border-radius: var(--radius);
   padding: 18px 22px; box-shadow: var(--shadow-soft);
   position: absolute; left: 24px; bottom: -28px; right: 24px;
+}
+.credentials-badges.standalone {
+  position: static;
+  max-width: 440px;
+  margin: 0 auto;
+  justify-content: center;
 }
 .credentials-badges img { height: 56px; width: auto; box-shadow: none; border-radius: 0; }
 .credentials-badges .div { width: 1px; height: 44px; background: var(--line); }
@@ -261,7 +273,10 @@ section { padding: 92px 0; }
 .piece-card {
   position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/5;
   background: var(--white); box-shadow: 0 10px 24px -14px rgba(90,62,54,0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.piece-card:hover { box-shadow: 0 20px 34px -16px rgba(90,62,54,0.45); transform: translateY(-6px); }
+.piece-card picture { display: block; width: 100%; height: 100%; }
 .piece-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 .piece-card:hover img { transform: scale(1.06); }
 .piece-card figcaption {
@@ -270,6 +285,15 @@ section { padding: 92px 0; }
   color: var(--white); font-family: var(--font-display); font-size: 1.02rem;
 }
 .piece-card figcaption small { display: block; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.06em; color: #f0c893; margin-top: 2px; }
+.card-detail-btn {
+  position: absolute; top: 10px; right: 10px; z-index: 3;
+  width: 30px; height: 30px; border-radius: 50%; border: none;
+  background: rgba(20,10,8,0.55); color: #fff; font-size: 1.05rem;
+  cursor: pointer; line-height: 1; display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.25s ease, background 0.25s ease;
+}
+.piece-card:hover .card-detail-btn { opacity: 1; }
+.card-detail-btn:hover { background: var(--accent); }
 .piece-card.is-sample::before {
   content: "Sample design";
   position: absolute;
@@ -288,7 +312,9 @@ section { padding: 92px 0; }
 /* =========================================================
    Collections filter grid
    ========================================================= */
-.filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; transition: opacity 0.3s ease; }
+.filter-bar.is-dimmed { opacity: 0.45; }
+.pricing-note { font-size: 0.85rem; color: var(--ink-soft); font-style: italic; margin: -28px 0 32px; }
 .filter-btn {
   padding: 9px 20px; border-radius: 999px; border: 1px solid var(--line); background: transparent;
   font-family: var(--font-body); font-size: 0.86rem; font-weight: 500; color: var(--ink-soft); cursor: pointer;
@@ -402,6 +428,63 @@ section { padding: 92px 0; }
    ========================================================= */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal.piece-card:hover { transform: translateY(-6px); }
+
+/* =========================================================
+   Floating WhatsApp button (all pages)
+   ========================================================= */
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 200;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 26px -8px rgba(0,0,0,0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.whatsapp-float:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 14px 30px -8px rgba(0,0,0,0.5); }
+.whatsapp-float svg { width: 28px; height: 28px; color: #fff; }
+@media (max-width: 520px) {
+  .whatsapp-float { right: 16px; bottom: 16px; width: 50px; height: 50px; }
+  .whatsapp-float svg { width: 25px; height: 25px; }
+}
+
+/* =========================================================
+   Product detail modal
+   ========================================================= */
+.product-modal {
+  position: fixed; inset: 0; z-index: 300; display: none;
+  align-items: center; justify-content: center; padding: 24px;
+  background: rgba(20,10,8,0.72); backdrop-filter: blur(4px);
+}
+.product-modal.is-open { display: flex; }
+.product-modal-card {
+  position: relative; background: var(--white); border-radius: var(--radius);
+  max-width: 720px; width: 100%; max-height: 88vh; overflow-y: auto;
+  display: grid; grid-template-columns: 1.1fr 1fr; box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+}
+.product-modal-media { background: var(--tan); }
+.product-modal-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.product-modal-info { padding: 36px 32px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.product-modal-info h3 { margin: 0; font-size: 1.4rem; }
+.product-modal-spec { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 10px; }
+.product-modal-whatsapp { align-self: flex-start; }
+.product-modal-close {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  width: 36px; height: 36px; border-radius: 50%; border: none;
+  background: rgba(20,10,8,0.5); color: #fff; font-size: 1.2rem; cursor: pointer;
+}
+.product-modal-close:hover { background: var(--brown); }
+@media (max-width: 720px) {
+  .product-modal-card { grid-template-columns: 1fr; }
+  .product-modal-media { height: 240px; }
+}
 
 /* =========================================================
    Page intro banner

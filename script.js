@@ -40,6 +40,22 @@ document.addEventListener("DOMContentLoaded", function () {
     restartTimer();
   }
 
+  // Subtle parallax on the hero background while scrolling past it.
+  var heroSection = document.querySelector(".hero");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (heroSection && slides.length && !reduceMotion) {
+    var onHeroScroll = function () {
+      var rect = heroSection.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var offset = window.scrollY * 0.25;
+      slides.forEach(function (el) {
+        el.style.transform = "translateY(" + offset + "px) scale(1.12)";
+      });
+    };
+    window.addEventListener("scroll", onHeroScroll, { passive: true });
+    onHeroScroll();
+  }
+
   // Count-up stats.
   var stats = document.querySelectorAll(".stat-number[data-target]");
   if (stats.length) {
@@ -100,6 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     if (galleryGrid) galleryGrid.classList.remove("type-mode");
     if (typeBanner) typeBanner.classList.remove("is-active");
+    var filterBar = document.querySelector(".filter-bar");
+    if (filterBar) filterBar.classList.remove("is-dimmed");
   }
 
   // Drill into one specific product type — e.g. clicking a mangalsutra
@@ -117,6 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
         typeBannerText.textContent = "Showing: " + (typeLabels[type] || type);
       }
     }
+    var filterBar = document.querySelector(".filter-bar");
+    if (filterBar) filterBar.classList.add("is-dimmed");
   }
 
   if (filterButtons.length && pieces.length) {
@@ -156,5 +176,71 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
+  }
+
+  // Floating WhatsApp button, present on every page.
+  var waLink = document.createElement("a");
+  waLink.href = "https://wa.me/919822880996?text=" + encodeURIComponent("Hi, I'm interested in your jewellery collection.");
+  waLink.className = "whatsapp-float";
+  waLink.target = "_blank";
+  waLink.rel = "noopener";
+  waLink.setAttribute("aria-label", "Chat with us on WhatsApp");
+  waLink.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.41-1.42a9.87 9.87 0 004.63 1.18h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.1c-.24.68-1.4 1.31-1.93 1.36-.5.05-1.03.28-3.46-.72-2.93-1.2-4.78-4.15-4.93-4.34-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.32.02.51-.09.2-.14.32-.28.49-.14.17-.29.38-.42.51-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.28.37-.23.63-.14.26.09 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>';
+  document.body.appendChild(waLink);
+
+  // Gently prevent picking a Monday for showroom visits (closed that day).
+  var visitDate = document.querySelector("#visit-date");
+  if (visitDate) {
+    visitDate.addEventListener("change", function () {
+      if (!visitDate.value) return;
+      var picked = new Date(visitDate.value + "T00:00:00");
+      if (picked.getDay() === 1) {
+        alert("We're closed on Mondays \u2014 please pick another day.");
+        visitDate.value = "";
+      }
+    });
+  }
+
+  // Product detail modal — opened via the small info button on each card,
+  // without interfering with the card's own click-to-filter behavior.
+  var productModal = document.querySelector(".product-modal");
+  if (productModal) {
+    var modalImg = productModal.querySelector(".product-modal-media img");
+    var modalTitle = productModal.querySelector("h3");
+    var modalSpec = productModal.querySelector(".product-modal-spec");
+    var modalWhatsapp = productModal.querySelector(".product-modal-whatsapp");
+    var modalClose = productModal.querySelector(".product-modal-close");
+
+    document.querySelectorAll(".card-detail-btn").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var card = btn.closest(".piece-card");
+        if (!card) return;
+        var img = card.querySelector("img");
+        var nameEl = card.querySelector("figcaption");
+        var specEl = card.querySelector("figcaption small");
+        var name = "";
+        if (nameEl) {
+          name = nameEl.childNodes[0] ? nameEl.childNodes[0].textContent.trim() : nameEl.textContent.trim();
+        }
+        var spec = specEl ? specEl.textContent.trim() : "";
+
+        if (img) { modalImg.src = img.src; modalImg.alt = img.alt; }
+        modalTitle.textContent = name;
+        modalSpec.textContent = spec;
+        modalWhatsapp.href = "https://wa.me/919822880996?text=" +
+          encodeURIComponent("Hi, I'm interested in the " + name + ".");
+        productModal.classList.add("is-open");
+      });
+    });
+
+    function closeProductModal() { productModal.classList.remove("is-open"); }
+    modalClose.addEventListener("click", closeProductModal);
+    productModal.addEventListener("click", function (e) {
+      if (e.target === productModal) closeProductModal();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeProductModal();
+    });
   }
 });

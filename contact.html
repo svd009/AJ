@@ -5,19 +5,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Contact Us | Anand Jewellers, Pune</title>
 <meta name="description" content="Visit Anand Jewellers at Shop no. 5, Narsinh Residency, New Sangvi, Pune, or reach out to book an appointment." />
-<link rel="icon" href="images/8.jpg" type="image/jpeg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Contact Us | Anand Jewellers, Pune" />
+<meta property="og:description" content="Visit Anand Jewellers at Shop no. 5, Narsinh Residency, New Sangvi, Pune, or reach out to book an appointment." />
+<meta property="og:image" content="https://www.anandjeweller.com/images/aj1.jpg" />
+<meta property="og:url" content="https://www.anandjeweller.com/contact.html" />
+<meta property="og:site_name" content="Anand Jewellers" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Contact Us | Anand Jewellers, Pune" />
+<meta name="twitter:description" content="Visit Anand Jewellers at Shop no. 5, Narsinh Residency, New Sangvi, Pune, or reach out to book an appointment." />
+<meta name="twitter:image" content="https://www.anandjeweller.com/images/aj1.jpg" />
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png" />
+<link rel="icon" href="images/favicon.ico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "JewelryStore",
+  "name": "Anand Jewellers",
+  "image": "https://www.anandjeweller.com/images/aj1.jpg",
+  "url": "https://www.anandjeweller.com/",
+  "telephone": "+91-98228-80996",
+  "email": "anandsangvi2425@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Shop no. 5, Narsinh Residency, New Sangvi",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "postalCode": "411027",
+    "addressCountry": "IN"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "10:00",
+      "closes": "21:00"
+    }
+  ],
+  "foundingDate": "2001"
+}
+</script>
 </head>
 <body>
 
 <header class="site-header">
   <a href="index.html" class="brand">
     <span class="logo-stack">
-      <img src="images/8.jpg" alt="Anand Jewellers logo" class="logo" />
-      <img src="images/7.jpg" alt="Government-Approved Gold Valuer badge" class="logo-badge" />
+      <picture><source srcset="images/logo-small.webp" type="image/webp" /><img src="images/logo-small.jpg" alt="Anand Jewellers logo" class="logo" /></picture>
+      <picture><source srcset="images/badge-small.webp" type="image/webp" /><img src="images/badge-small.jpg" alt="Government-Approved Gold Valuer badge" class="logo-badge" /></picture>
     </span>
     <span class="brand-name">Anand Jewellers<small>Since 2001 &middot; Pune</small></span>
   </a>
@@ -100,8 +148,8 @@
     <div>
       <form class="form" action="https://formsubmit.co/anandsangvi2425@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New enquiry from anandjeweller.com" />
-        <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://www.anandjeweller.com/thank-you.html" />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <h2 style="margin-bottom:4px;">Send a Message</h2>
         <p class="form-note">We usually reply within a day.</p>
@@ -129,6 +177,25 @@
             <option>Something else</option>
           </select>
         </div>
+        <div class="form-row-2">
+          <div>
+            <label for="visit-date">Preferred date <span class="form-note" style="display:inline;">(if booking a visit)</span></label>
+            <input type="date" id="visit-date" name="preferred_date" />
+          </div>
+          <div>
+            <label for="visit-time">Preferred time slot</label>
+            <select id="visit-time" name="preferred_time">
+              <option value="">No preference</option>
+              <option>10:00 AM &ndash; 12:00 PM</option>
+              <option>12:00 PM &ndash; 2:00 PM</option>
+              <option>2:00 PM &ndash; 4:00 PM</option>
+              <option>4:00 PM &ndash; 6:00 PM</option>
+              <option>6:00 PM &ndash; 8:00 PM</option>
+              <option>8:00 PM &ndash; 9:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <p class="form-note">Showroom is closed on Mondays &mdash; we'll confirm your slot by phone or email.</p>
         <div>
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="4"></textarea>
@@ -157,7 +224,7 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <img src="images/8.jpg" alt="Anand Jewellers logo" />
+          <picture><source srcset="images/logo-small.webp" type="image/webp" /><img src="images/logo-small.jpg" alt="Anand Jewellers logo" /></picture>
           <span>Anand Jewellers</span>
         </div>
         <p>Timeless gold, silver and diamond jewellery, crafted with trust and care since 2001.</p>
