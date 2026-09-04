@@ -299,6 +299,32 @@ section { padding: 92px 0; }
 .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .gallery-grid .piece-card { cursor: pointer; }
 .gallery-grid .piece-card.is-hidden { display: none; }
+.gallery-grid .piece-card figcaption small { display: none; }
+.gallery-grid.type-mode .piece-card figcaption small { display: block; }
+
+.type-banner {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--tan);
+  border-radius: var(--radius);
+  padding: 14px 22px;
+  margin: -12px 0 28px;
+  font-weight: 600;
+  color: var(--brown-dark);
+}
+.type-banner.is-active { display: flex; }
+.type-banner-clear {
+  border: none;
+  background: none;
+  color: var(--brown);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
 
 /* =========================================================
    Services rows + process

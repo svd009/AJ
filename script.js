@@ -82,42 +82,73 @@ document.addEventListener("DOMContentLoaded", function () {
   // Collections filter.
   var filterButtons = document.querySelectorAll(".filter-btn");
   var pieces = document.querySelectorAll(".gallery-grid .piece-card");
+  var galleryGrid = document.querySelector(".gallery-grid");
+  var typeBanner = document.querySelector(".type-banner");
+  var typeBannerText = document.querySelector(".type-banner-text");
+  var typeBannerClear = document.querySelector(".type-banner-clear");
+
+  var typeLabels = {
+    necklace: "Necklaces", ring: "Rings", earring: "Earrings",
+    bangle: "Bangles", mangalsutra: "Mangalsutra", bracelet: "Bracelets",
+    anklet: "Anklets", gemstone: "Gemstones"
+  };
+
+  function showMaterial(category) {
+    pieces.forEach(function (card) {
+      var match = category === "all" || card.getAttribute("data-category") === category;
+      card.classList.toggle("is-hidden", !match);
+    });
+    if (galleryGrid) galleryGrid.classList.remove("type-mode");
+    if (typeBanner) typeBanner.classList.remove("is-active");
+  }
+
+  // Drill into one specific product type — e.g. clicking a mangalsutra
+  // photo, or landing here via collections.html?type=mangalsutra, shows
+  // every mangalsutra design with full details, and nothing else.
+  function showType(type) {
+    pieces.forEach(function (card) {
+      card.classList.toggle("is-hidden", card.getAttribute("data-type") !== type);
+    });
+    filterButtons.forEach(function (b) { b.classList.remove("active"); });
+    if (galleryGrid) galleryGrid.classList.add("type-mode");
+    if (typeBanner) {
+      typeBanner.classList.add("is-active");
+      if (typeBannerText) {
+        typeBannerText.textContent = "Showing: " + (typeLabels[type] || type);
+      }
+    }
+  }
+
   if (filterButtons.length && pieces.length) {
     filterButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
         filterButtons.forEach(function (b) { b.classList.remove("active"); });
         btn.classList.add("active");
-        var category = btn.getAttribute("data-filter");
-        pieces.forEach(function (card) {
-          var match = category === "all" || card.getAttribute("data-category") === category;
-          card.classList.toggle("is-hidden", !match);
-        });
+        showMaterial(btn.getAttribute("data-filter"));
       });
     });
 
-    // Clicking any product jumps to the "All Pieces" filter narrowed to
-    // that product's own category — e.g. clicking a gold necklace shows
-    // every gold piece, not a single zoomed-in photo.
     pieces.forEach(function (card) {
       card.addEventListener("click", function () {
-        var category = card.getAttribute("data-category");
-        var targetBtn = document.querySelector('.filter-btn[data-filter="' + category + '"]');
-        if (targetBtn) targetBtn.click();
+        showType(card.getAttribute("data-type"));
         var galleryTop = document.querySelector(".filter-bar");
         if (galleryTop) galleryTop.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
+
+    if (typeBannerClear) {
+      typeBannerClear.addEventListener("click", function () {
+        var allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allBtn) allBtn.click();
+      });
+    }
 
     // Deep link from the homepage "shop by category" circles, e.g.
     // collections.html?type=ring shows only rings, regardless of material.
     var params = new URLSearchParams(window.location.search);
     var typeParam = params.get("type");
     if (typeParam) {
-      filterButtons.forEach(function (b) { b.classList.remove("active"); });
-      pieces.forEach(function (card) {
-        var match = card.getAttribute("data-type") === typeParam;
-        card.classList.toggle("is-hidden", !match);
-      });
+      showType(typeParam);
       var galleryTop2 = document.querySelector(".filter-bar");
       if (galleryTop2) {
         window.requestAnimationFrame(function () {
