@@ -270,6 +270,20 @@ section { padding: 92px 0; }
   color: var(--white); font-family: var(--font-display); font-size: 1.02rem;
 }
 .piece-card figcaption small { display: block; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.06em; color: #f0c893; margin-top: 2px; }
+.piece-card.is-sample::before {
+  content: "Sample design";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  background: var(--brown);
+  color: var(--white);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
 
 /* =========================================================
    Collections filter grid

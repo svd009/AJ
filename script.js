@@ -94,6 +94,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     });
+
+    // Deep link from the homepage "shop by category" circles, e.g.
+    // collections.html?type=ring shows only rings, regardless of material.
+    var params = new URLSearchParams(window.location.search);
+    var typeParam = params.get("type");
+    if (typeParam) {
+      filterButtons.forEach(function (b) { b.classList.remove("active"); });
+      pieces.forEach(function (card) {
+        var match = card.getAttribute("data-type") === typeParam;
+        card.classList.toggle("is-hidden", !match);
+      });
+      var galleryTop = document.querySelector(".filter-bar");
+      if (galleryTop) {
+        window.requestAnimationFrame(function () {
+          galleryTop.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    }
   }
 
   // Lightbox for the collections gallery.
