@@ -147,14 +147,29 @@ document.addEventListener("DOMContentLoaded", function () {
   if (filterButtons.length && pieces.length) {
     filterButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        filterButtons.forEach(function (b) { b.classList.remove("active"); });
-        btn.classList.add("active");
-        showMaterial(btn.getAttribute("data-filter"));
+        var filter = btn.getAttribute("data-filter");
+        if (filter === "idols") {
+          // Idols aren't filtered by material like the rest — treat this
+          // as its own section with the "Showing: Idols" banner.
+          showType("idol");
+        } else {
+          filterButtons.forEach(function (b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+          showMaterial(filter);
+        }
       });
     });
 
     pieces.forEach(function (card) {
       card.addEventListener("click", function () {
+        // Idols are already their own isolated section — clicking one
+        // again would be a no-op filter, so open the full-image view
+        // instead, same as the info button.
+        if (card.getAttribute("data-category") === "idols") {
+          var detailBtn = card.querySelector(".card-detail-btn");
+          if (detailBtn) detailBtn.click();
+          return;
+        }
         showType(card.getAttribute("data-type"));
         var galleryTop = document.querySelector(".filter-bar");
         if (galleryTop) galleryTop.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -229,14 +244,21 @@ document.addEventListener("DOMContentLoaded", function () {
         var nameEl = card.querySelector("figcaption");
         var name = "";
         if (nameEl) {
-          name = nameEl.childNodes[0] ? nameEl.childNodes[0].textContent.trim() : nameEl.textContent.trim();
+          // Skip HTML comments (used as placeholders for names not yet
+          // set) — only read actual text nodes as the product name.
+          var firstNode = nameEl.childNodes[0];
+          if (firstNode && firstNode.nodeType === Node.TEXT_NODE) {
+            name = firstNode.textContent.trim();
+          }
         }
 
         if (img) { modalImg.src = img.src; modalImg.alt = img.alt; }
         modalTitle.textContent = name;
+        modalTitle.style.display = name ? "" : "none";
         modalSpec.textContent = "Message us on WhatsApp or visit our showroom for pricing, purity and weight details.";
+        var whatsAppLabel = name || "this piece";
         modalWhatsapp.href = "https://wa.me/919822880996?text=" +
-          encodeURIComponent("Hi, I'm interested in the " + name + ". Could you share more details?");
+          encodeURIComponent("Hi, I'm interested in " + whatsAppLabel + ". Could you share more details?");
         productModal.classList.add("is-open");
       });
     });
