@@ -111,7 +111,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showMaterial(category) {
     pieces.forEach(function (card) {
-      var match = category === "all" || card.getAttribute("data-category") === category;
+      var cardCategory = card.getAttribute("data-category");
+      // "All Pieces" means all jewellery — Idols stay in their own section,
+      // reachable only via the dedicated Idols filter or homepage circle.
+      var match = category === "all"
+        ? cardCategory !== "idols"
+        : cardCategory === category;
       card.classList.toggle("is-hidden", !match);
     });
     if (galleryGrid) galleryGrid.classList.remove("type-mode");
@@ -175,6 +180,10 @@ document.addEventListener("DOMContentLoaded", function () {
           galleryTop2.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       }
+    } else {
+      // No deep link — apply the default "All Pieces" state, which
+      // keeps Idols in their own section rather than mixed in here.
+      showMaterial("all");
     }
   }
 
