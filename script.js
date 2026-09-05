@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var typeLabels = {
     necklace: "Necklaces", ring: "Rings", earring: "Earrings",
     bangle: "Bangles", mangalsutra: "Mangalsutra", bracelet: "Bracelets",
-    anklet: "Anklets", gemstone: "Gemstones"
+    anklet: "Anklets", gemstone: "Gemstones", idol: "Idols"
   };
 
   function showMaterial(category) {
@@ -218,18 +218,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!card) return;
         var img = card.querySelector("img");
         var nameEl = card.querySelector("figcaption");
-        var specEl = card.querySelector("figcaption small");
         var name = "";
         if (nameEl) {
           name = nameEl.childNodes[0] ? nameEl.childNodes[0].textContent.trim() : nameEl.textContent.trim();
         }
-        var spec = specEl ? specEl.textContent.trim() : "";
 
         if (img) { modalImg.src = img.src; modalImg.alt = img.alt; }
         modalTitle.textContent = name;
-        modalSpec.textContent = spec;
+        modalSpec.textContent = "Message us on WhatsApp or visit our showroom for pricing, purity and weight details.";
         modalWhatsapp.href = "https://wa.me/919822880996?text=" +
-          encodeURIComponent("Hi, I'm interested in the " + name + ".");
+          encodeURIComponent("Hi, I'm interested in the " + name + ". Could you share more details?");
         productModal.classList.add("is-open");
       });
     });

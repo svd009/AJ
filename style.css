@@ -203,7 +203,7 @@ section { padding: 92px 0; }
 /* =========================================================
    Shop-by-category row
    ========================================================= */
-.category-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; text-align: center; }
+.category-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 22px; text-align: center; }
 .category-item { text-decoration: none; color: var(--ink); }
 .category-circle {
   width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; margin-bottom: 12px;
