@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var typeLabels = {
     necklace: "Necklaces", ring: "Rings", earring: "Earrings",
     bangle: "Bangles", mangalsutra: "Mangalsutra", bracelet: "Bracelets",
-    anklet: "Anklets", gemstone: "Gemstones", idol: "Idols", pendant: "Pendants"
+    anklet: "Anklets", gemstone: "Gemstones", idol: "Idols"
   };
 
   function showMaterial(category) {
