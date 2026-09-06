@@ -97,7 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Collections filter.
   var filterButtons = document.querySelectorAll(".filter-btn");
-  var pieces = document.querySelectorAll(".gallery-grid .piece-card");
+  var pieces = document.querySelectorAll(".gallery-grid .piece-card:not([data-role='category-preview'])");
+  var idolsPreviewCard = document.querySelector('.idols-preview-card[data-role="category-preview"]');
   var galleryGrid = document.querySelector(".gallery-grid");
   var typeBanner = document.querySelector(".type-banner");
   var typeBannerText = document.querySelector(".type-banner-text");
@@ -106,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var typeLabels = {
     necklace: "Necklaces", ring: "Rings", earring: "Earrings",
     bangle: "Bangles", mangalsutra: "Mangalsutra", bracelet: "Bracelets",
-    anklet: "Anklets", gemstone: "Gemstones", idol: "Idols"
+    anklet: "Anklets", gemstone: "Gemstones", idol: "Idols", pendant: "Pendants"
   };
 
   function showMaterial(category) {
@@ -119,6 +120,9 @@ document.addEventListener("DOMContentLoaded", function () {
         : cardCategory === category;
       card.classList.toggle("is-hidden", !match);
     });
+    // The Idols category-preview tile only makes sense in "All Pieces" —
+    // it has no place under a single-material filter like Gold or Silver.
+    if (idolsPreviewCard) idolsPreviewCard.classList.toggle("is-hidden", category !== "all");
     if (galleryGrid) galleryGrid.classList.remove("type-mode");
     if (typeBanner) typeBanner.classList.remove("is-active");
     var filterBar = document.querySelector(".filter-bar");
@@ -132,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     pieces.forEach(function (card) {
       card.classList.toggle("is-hidden", card.getAttribute("data-type") !== type);
     });
+    if (idolsPreviewCard) idolsPreviewCard.classList.add("is-hidden");
     filterButtons.forEach(function (b) { b.classList.remove("active"); });
     if (galleryGrid) galleryGrid.classList.add("type-mode");
     if (typeBanner) {
@@ -180,6 +185,14 @@ document.addEventListener("DOMContentLoaded", function () {
       typeBannerClear.addEventListener("click", function () {
         var allBtn = document.querySelector('.filter-btn[data-filter="all"]');
         if (allBtn) allBtn.click();
+      });
+    }
+
+    if (idolsPreviewCard) {
+      idolsPreviewCard.addEventListener("click", function () {
+        showType("idol");
+        var galleryTop = document.querySelector(".filter-bar");
+        if (galleryTop) galleryTop.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
 
