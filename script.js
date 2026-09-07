@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var typeBannerClear = document.querySelector(".type-banner-clear");
 
   var typeLabels = {
-    necklace: "Necklaces", ring: "Rings", earring: "Earrings",
+    necklace: "Necklaces", ring: "Gemstone Rings", earring: "Earrings",
     bangle: "Bangles", mangalsutra: "Mangalsutra", bracelet: "Bracelets",
     anklet: "Anklets", gemstone: "Gemstones", idol: "Idols", pendant: "Pendants"
   };
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (filterBar) filterBar.classList.add("is-dimmed");
   }
 
-  if (filterButtons.length && pieces.length) {
+  if (pieces.length) {
     filterButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
         var filter = btn.getAttribute("data-filter");
@@ -192,8 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (typeBannerClear) {
       typeBannerClear.addEventListener("click", function () {
-        var allBtn = document.querySelector('.filter-btn[data-filter="all"]');
-        if (allBtn) allBtn.click();
+        showMaterial("all");
       });
     }
 
