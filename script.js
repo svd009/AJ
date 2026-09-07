@@ -107,17 +107,26 @@ document.addEventListener("DOMContentLoaded", function () {
   var typeLabels = {
     necklace: "Necklaces", ring: "Rings", earring: "Earrings",
     bangle: "Bangles", mangalsutra: "Mangalsutra", bracelet: "Bracelets",
-    anklet: "Anklets", gemstone: "Gemstones", idol: "Idols"
+    anklet: "Anklets", gemstone: "Gemstones", idol: "Idols", pendant: "Pendants"
   };
 
   function showMaterial(category) {
+    // Types with multiple photos are "nested" in the All Pieces view —
+    // only their one representative tile shows there; the rest are
+    // reachable by clicking that tile (or a homepage category circle),
+    // same pattern as Idols.
+    var nestedTypes = ["earring", "necklace", "ring", "mangalsutra", "bangle", "pendant"];
     pieces.forEach(function (card) {
       var cardCategory = card.getAttribute("data-category");
-      // "All Pieces" means all jewellery — Idols stay in their own section,
-      // reachable only via the dedicated Idols filter or homepage circle.
-      var match = category === "all"
-        ? cardCategory !== "idols"
-        : cardCategory === category;
+      var cardType = card.getAttribute("data-type");
+      var isPreview = card.hasAttribute("data-preview");
+      var match;
+      if (category === "all") {
+        var isNested = nestedTypes.indexOf(cardType) !== -1;
+        match = cardCategory !== "idols" && (!isNested || isPreview);
+      } else {
+        match = cardCategory === category;
+      }
       card.classList.toggle("is-hidden", !match);
     });
     // The Idols category-preview tile only makes sense in "All Pieces" —
