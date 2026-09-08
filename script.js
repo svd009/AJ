@@ -107,7 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var typeLabels = {
     necklace: "Necklaces", ring: "Gemstone Rings", earring: "Earrings",
     bangle: "Bangles", mangalsutra: "Mangalsutra", bracelet: "Bracelets",
-    anklet: "Anklets", gemstone: "Gemstones", idol: "Idols", pendant: "Pendants"
+    anklet: "Anklets", gemstone: "Gemstones", idol: "Idols", pendant: "Pendants",
+    chain: "Chains"
   };
 
   function showMaterial(category) {
@@ -115,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // only their one representative tile shows there; the rest are
     // reachable by clicking that tile (or a homepage category circle),
     // same pattern as Idols.
-    var nestedTypes = ["earring", "necklace", "ring", "mangalsutra", "bangle", "pendant", "anklet"];
+    var nestedTypes = ["earring", "necklace", "ring", "mangalsutra", "bangle", "pendant", "anklet", "chain", "bracelet"];
     pieces.forEach(function (card) {
       var cardCategory = card.getAttribute("data-category");
       var cardType = card.getAttribute("data-type");
